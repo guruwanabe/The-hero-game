@@ -1,4 +1,4 @@
-# The hero game
+# The hero game - work in progress
 
 ## The story
 Once upon a time there was a great hero, called Orderus, with some strengths and weaknesses, as all heroes have.
