@@ -25,7 +25,7 @@ following properties:
 * Speed: 40 – 60
 * Luck: 25% - 40%
 
-You’ll have to simulate a battle between Orderus and a wild beast, either at command line or using a web browser. On every battle, Orderus and the beast must be initialized with random properties, within their ranges.
+On every battle, Orderus and the beast must be initialized with random properties, within their ranges.
 
 The first attack is done by the player with the higher speed. If both players have the same speed,
 than the attack is carried on by the player with the highest luck. After an attack, the players switch
