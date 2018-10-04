@@ -21,7 +21,7 @@ class Game extends Component{
 	constructor(options) {
    	super(options);
 
-		this.players = options.players;
+	this.players = options.players;
     this.attacker = null;
     this.defender = null;
     this.winner = null;
@@ -31,7 +31,7 @@ class Game extends Component{
   //stop, pause, exit
 	start() {
    	let attack;
-		this.state = 'running';
+	this.state = 'running';
     this.attacker = this.getFirstAttacker(
       this.players[0],
       this.players[1]
@@ -118,16 +118,15 @@ class Game extends Component{
 
 class Player extends Component{
 	constructor(options) {
-    super(options);
-    this.hero = options.hero;
+    	super(options);
+    	this.hero = options.hero;
 	}
-
 }
 
 class Hero extends Component{
 	constructor(options) {
-    super(options);
-    this.health = options.health || 100;
+		super(options);
+		this.health = options.health || 100;
 		this.strenght = options.strenght || 100;
 		this.defence = options.defence || 100;
 		this.speed = options.speed || 100;
@@ -160,9 +159,9 @@ class Hero extends Component{
 
 class Skill extends Component{
 	constructor(options) {
-    super(options);
-    this.damage = options.damage;
-    this.chanceToHit = options.chanceToHit;
+		super(options);
+		this.damage = options.damage;
+		this.chanceToHit = options.chanceToHit;
 	}
 
   static getDamage(strenght, defence){
