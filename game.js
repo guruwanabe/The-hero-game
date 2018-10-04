@@ -253,4 +253,4 @@ const game = new Game({
 });
 
 game.start();
-console.log(game);
+//console.log(game);
