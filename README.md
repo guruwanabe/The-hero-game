@@ -44,3 +44,8 @@ The game ends when one of the players remain without health or the number of tur
 The application must output the results each turn: what happened, which skills were used (if any),
 the damage done, defender’s health left.
 If we have a winner before the maximum number of rounds is reached, he must be declared
+
+
+## Run the game
+Copy / paste the entire code in your browser console.
+The game will start automaticly and it will update the status in the console. Enjoy!
