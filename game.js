@@ -46,23 +46,14 @@ class Game extends Component{
     this.fight();
 
     const attack = setInterval(() => {
-      if (this.attacker.hero.health <= 0 || this.defender.hero.health <= 0) {
+      if (this.attacker.hero.health <= 0 || this.defender.hero.health <= 0 || this.getRounds() === 19) {
         this.gameOver(this.attacker, this.defender);
         this.getWinner();
         this.stop(attack);
       }else{
-        if(this.getRounds() === 19){
-          this.gameOver(this.attacker, this.defender);
-          this.getWinner();
-          this.stop(attack);
-          return;
-        }
         this.fight();
       }
     }, 1000);
-
-
-
   }
 
   stop(event){
