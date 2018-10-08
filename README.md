@@ -47,5 +47,5 @@ If we have a winner before the maximum number of rounds is reached, he must be d
 
 
 ## Run the game
-Copy / paste the entire code in your browser console or go to https://guruwanabe.github.io/The-hero-game/
+Copy / paste the entire code in your browser console or go to https://guruwanabe.github.io/The-hero-game/. 
 The game will start automaticly and it will update the status in the console. Enjoy!
