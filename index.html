@@ -1,93 +1,91 @@
 <!doctype html>
 <html>
 	<head>
-		<title>EventFeedback - Add visual feedback to click or touch events </title>
+		<title>The Hero Game</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <script src="game.js"></script>
-  </head>
-  <body>
+		<script src="game.js"></script>
+	</head>
+	<body>
     <script>
-      
+		const id = Math.random().toString(36).substring(7);
+		const orderus = {
+		  id: `hero_${id}`,
+		  name:'Orderus',
+		  state: 'not in combat',
+		  health: Component.getRandomNumberBetween(70, 100),
+		  strenght: Component.getRandomNumberBetween(70, 80),
+		  defence: Component.getRandomNumberBetween(45, 55),
+		  speed: Component.getRandomNumberBetween(40, 50),
+		  luck: Component.getRandomNumberBetween(10, 30),
+		  skills: [
+			{
+			  id: `skill_${id}`,
+			  name:'Attack',
+			  damage: 1,
+			  chanceToHit: 70
+			},
+			{
+			  id: `skill_${id}`,
+			  name:'Rapid Strikes',
+			  damage: 2,
+			  chanceToHit: 10
+			},
+			{
+			  id: `skill_${id}`,
+			  name:'Magic shield',
+			  damage: 2,
+			  chanceToHit: 20
+			}
+		  ]
+		};
 
-const id = Math.random().toString(36).substring(7);
-const orderus = {
-  id: `hero_${id}`,
-  name:'Orderus',
-  state: 'not in combat',
-  health: Component.getRandomNumberBetween(70, 100),
-  strenght: Component.getRandomNumberBetween(70, 80),
-  defence: Component.getRandomNumberBetween(45, 55),
-  speed: Component.getRandomNumberBetween(40, 50),
-  luck: Component.getRandomNumberBetween(10, 30),
-  skills: [
-    {
-      id: `skill_${id}`,
-      name:'Attack',
-      damage: 1,
-      chanceToHit: 70
-    },
-    {
-      id: `skill_${id}`,
-      name:'Rapid Strikes',
-      damage: 2,
-      chanceToHit: 10
-    },
-    {
-      id: `skill_${id}`,
-      name:'Magic shield',
-      damage: 2,
-      chanceToHit: 20
-    }
-  ]
-};
+		const beast = {
+		  id: `hero_${id}`,
+		  name:'Beast',
+		  state: 'not in combat',
+		  health: Component.getRandomNumberBetween(60, 90),
+		  strenght: Component.getRandomNumberBetween(60, 90),
+		  defence: Component.getRandomNumberBetween(40, 60),
+		  speed: Component.getRandomNumberBetween(40, 60),
+		  luck: Component.getRandomNumberBetween(25, 40),
+		  skills: [
+			{
+			  id: `skill_${id}`,
+			  name:'Attack',
+			  damage: 1,
+			  chanceToHit: 100
+			}
+		  ]
+		};
 
-const beast = {
-  id: `hero_${id}`,
-  name:'Beast',
-  state: 'not in combat',
-  health: Component.getRandomNumberBetween(60, 90),
-  strenght: Component.getRandomNumberBetween(60, 90),
-  defence: Component.getRandomNumberBetween(40, 60),
-  speed: Component.getRandomNumberBetween(40, 60),
-  luck: Component.getRandomNumberBetween(25, 40),
-  skills: [
-    {
-      id: `skill_${id}`,
-      name:'Attack',
-      damage: 1,
-      chanceToHit: 100
-    }
-  ]
-};
+		const players = [
+		  new Player(
+			{
+			  id: `player_${id}`,
+			  name:'Player1',
+			  state: 'not in combat',
+			  hero: new Hero(orderus)
+			}
+		  ),
+		  new Player(
+			{
+			  id: `player_${id}`,
+			  name:'Computer',
+			  state: 'not in combat',
+			  hero: new Hero(beast)
+			}
+		  )
+		];
 
-const players = [
-  new Player(
-    {
-      id: `player_${id}`,
-      name:'Player1',
-      state: 'not in combat',
-      hero: new Hero(orderus)
-    }
-  ),
-  new Player(
-    {
-      id: `player_${id}`,
-      name:'Computer',
-      state: 'not in combat',
-      hero: new Hero(beast)
-    }
-  )
-];
+		const game = new Game({
+		  name:'The hero game',
+		  id: id,
+		  players: players,
+		  state: 'started'
+		});
 
-const game = new Game({
-  name:'The hero game',
-  id: id,
-  players: players,
-  state: 'started'
-});
-
-game.start();
+		game.start();
     </script>
     <div id="console">
 	    <h5>Open the Console panel</h5>
