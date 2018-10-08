@@ -31,12 +31,13 @@ class Game extends Component{
 
   //stop, pause, exit
   start() {
-    this.state = 'stared';
+    this.state = 'started';
     this.attacker = this.getFirstAttacker(this.players[0], this.players[1])
     this.defender = (this.players[0] === this.attacker) ? this.players[1] : this.players[0];
 
     console.info(
       `
+      New game!
       ${this.attacker.hero.name} health: ${this.attacker.hero.health}.
       ${this.defender.hero.name} health: ${this.defender.hero.health}.
       `
@@ -51,6 +52,8 @@ class Game extends Component{
         this.stop(attack);
       }else{
         if(this.getRounds() === 19){
+          this.gameOver(this.attacker, this.defender);
+          this.getWinner();
           this.stop(attack);
           return;
         }
