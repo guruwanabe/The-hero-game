@@ -8,6 +8,23 @@ class Component{
   setState(state){
     this.state = state;
   }
+  
+  getState(){
+    return this.state;
+  }
+  
+  addEvent(eventName, options, dispatchTarget){
+    if(!options){
+      options = {};
+    }
+    const event = new Event(eventName, options);
+    if(dispatchTarget){
+      dispatchTarget.dispatchEvent(event);
+    }else{
+      document.dispatchEvent(event);
+    }
+    return event;
+  }
 
   static getRandomNumberBetween(min, max) {
     return Math.floor(Math.random()*(max-min+1)+min)
@@ -31,7 +48,7 @@ class Game extends Component{
 
   //stop, pause, exit
   start() {
-    this.state = 'stared';
+    this.setState(this.addEvent('GameStarted', {"bubbles":true, "cancelable":false}));
     this.attacker = this.getFirstAttacker(this.players[0], this.players[1])
     this.defender = (this.players[0] === this.attacker) ? this.players[1] : this.players[0];
 
@@ -48,22 +65,18 @@ class Game extends Component{
       if (this.attacker.hero.health <= 0 || this.defender.hero.health <= 0) {
         this.gameOver(this.attacker, this.defender);
         this.getWinner();
-        this.stop(attack);
+        this.stopEvent(attack);
       }else{
         if(this.getRounds() === 19){
-          this.stop(attack);
+          this.stopEvent(attack);
           return;
         }
         this.fight();
       }
     }, 1000);
-
-
-
   }
 
-  stop(event){
-    this.state = 'stoped';
+  stopEvent(event){
     clearInterval(event);
     this.rounds = 0;
   }
@@ -124,7 +137,7 @@ class Game extends Component{
   gameOver(attacker, defender){
     const winner = (attacker.hero.health > defender.hero.health) ? attacker : defender;
     this.winner = winner;
-    this.state = 'stoped'
+    this.setState(this.addEvent('GameStoped'));
     return this.winner;
   }
 
